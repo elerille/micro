@@ -1,0 +1,21 @@
+{
+  "name": "µ",
+  "description": "Write me!",
+  "version": "0.0.1",
+  "perl": "6.*",
+  "authors": [
+    "Élerille"
+  ],
+  "auth": "github:elerille",
+  "depends": [
+    "JSON::Fast"
+  ],
+  "build-depends": [],
+  "test-depends": [],
+  "provides": {
+    "µ": "lib/µ.pm6"
+  },
+  "resources": [],
+  "license": "GPL-3.0-or-later",
+  "source-url": "git://github.com/elerille/micro.git"
+}

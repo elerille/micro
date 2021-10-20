@@ -1,0 +1,30 @@
+#!/usr/bin/env perl6
+use JSON::Fast;
+
+multi sub MAIN('build', $path, $dest = "elerille.json") {
+    my @metas;
+    for $path.IO.dir(test => /^ ["µ" | "micro"] ["::" | "-"]/) {
+        @metas.push: from-json $_.add("META6.json").slurp;
+    }
+    $dest.IO.spurt: to-json :sorted-keys, @metas
+}
+
+multi sub MAIN('configure', $dest) {
+
+    my $zef = run :err, <zef --help>;
+
+    my $zef-configuration = from-json $zef.err.slurp().lines.grep(/^^CONFIGURATION/).split(' ')[1].IO.slurp;
+    $zef-configuration<Repository>.unshift: [
+        { short-name => "elerille",
+          enabled => 1,
+          module => "Zef::Repository::Ecosystems",
+          options => {
+              auto-update => 1,
+              mirrors => ['https://raw.githubusercontent.com/elerille/micro/main/elerille.json'],
+              name => "elerille-micro",
+              :uses-path
+          }
+        },
+    ];
+    $dest.IO.spurt: to-json :sorted-keys, $zef-configuration;
+}

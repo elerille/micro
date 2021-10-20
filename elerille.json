@@ -1,0 +1,25 @@
+[
+  {
+    "auth": "github:elerille",
+    "authors": [
+      "Élerille"
+    ],
+    "build-depends": [
+    ],
+    "depends": [
+    ],
+    "description": "micro client HTTP",
+    "license": "GPL-3.0-or-later",
+    "name": "µ::HTTP::Client",
+    "perl": "6.*",
+    "provides": {
+      "µ::HTTP::Client": "lib/µ/HTTP/Client.pm6"
+    },
+    "resources": [
+    ],
+    "source-url": "git://github.com/elerille/micro-HTTP.git",
+    "test-depends": [
+    ],
+    "version": "0.0.1"
+  }
+]
